@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard IT - Reporte Mensual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            transition: width 0.8s ease-in-out;
+        }
+        .kpi-card {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6 shadow-lg">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold">Dashboard IT</h1>
+                    <p class="text-blue-100 mt-1">Reporte Mensual - Departamento de Tecnología</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-lg font-semibold" id="currentDate"></p>
+                    <p class="text-blue-100">Actualizado en tiempo real</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex space-x-8 overflow-x-auto py-4">
+                <button onclick="showSection('infraestructura')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg font-medium transition-colors bg-blue-600 text-white">
+                    🏗️ Infraestructura
+                </button>
+                <button onclick="showSection('desarrollo')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    💻 Desarrollo
+                </button>
+                <button onclick="showSection('dynamics')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    🔧 Dynamics AX
+                </button>
+                <button onclick="showSection('powerbi')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    📊 Power BI
+                </button>
+                <button onclick="showSection('seguridad')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    🔒 Ciberseguridad
+                </button>
+                <button onclick="showSection('helpdesk')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    🎧 Help Desk
+                </button>
+                <button onclick="showSection('conclusiones')" class="nav-btn whitespace-nowrap px-4 py-2 rounded-lg font-medium transition-colors text-gray-600 hover:bg-gray-100">
+                    📈 Conclusiones
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Infraestructura Section -->
+        <section id="infraestructura" class="section-content">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">🏗️ Infraestructura Tecnológica</h2>
+                <p class="text-gray-600">Estado general de la infraestructura y recursos tecnológicos</p>
+            </div>
+
+            <!-- KPIs Row -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Servidores Actualizados</p>
+                            <p class="text-3xl font-bold text-green-600">91%</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-600 h-2 rounded-full progress-bar" style="width: 91%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">50 de 55 servidores</p>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Licenciamiento</p>
+                            <p class="text-3xl font-bold text-blue-600">92%</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 92%"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Almacenamiento</p>
+                            <p class="text-3xl font-bold text-orange-600">68%</p>
+                        </div>
+                        <div class="bg-orange-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-orange-600 h-2 rounded-full progress-bar" style="width: 68%"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Incidencias Críticas</p>
+                            <p class="text-3xl font-bold text-red-600">3</p>
+                        </div>
+                        <div class="bg-red-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Resueltas este mes</p>
+                </div>
+            </div>
+
+            <!-- Infrastructure Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🖥️ Servidores Físicos</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Total Servidores Físicos</span>
+                            <span class="font-semibold text-blue-600">30</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Actualizados</span>
+                            <span class="font-semibold text-green-600">30 (100%)</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-3">
+                            <div class="bg-green-600 h-3 rounded-full progress-bar" style="width: 100%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Estado General</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Excelente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">☁️ Servidores Virtuales</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Total Servidores Virtuales</span>
+                            <span class="font-semibold text-blue-600">25</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Actualizados</span>
+                            <span class="font-semibold text-orange-600">20 (80%)</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-3">
+                            <div class="bg-orange-600 h-3 rounded-full progress-bar" style="width: 80%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Pendientes</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">5 servidores</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">📊 Resumen Global de Servidores</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Total de Servidores</span>
+                            <span class="font-semibold text-purple-600">55</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Servidores Actualizados</span>
+                            <span class="font-semibold text-green-600">50</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Porcentaje Global</span>
+                            <span class="font-semibold text-green-600">91%</span>
+                        </div>
+                        <div class="bg-gray-200 rounded-full h-4">
+                            <div class="bg-gradient-to-r from-green-500 to-green-600 h-4 rounded-full progress-bar" style="width: 91%"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div class="text-center p-3 bg-green-50 rounded-lg">
+                                <div class="text-lg font-bold text-green-600">100%</div>
+                                <div class="text-xs text-gray-600">Físicos</div>
+                            </div>
+                            <div class="text-center p-3 bg-orange-50 rounded-lg">
+                                <div class="text-lg font-bold text-orange-600">80%</div>
+                                <div class="text-xs text-gray-600">Virtuales</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🔌 Infraestructura de Red</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Cableado Estructurado</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Óptimo</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">SD-WAN Cobertura</span>
+                            <span class="font-semibold">95%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Equipos SD-WAN</span>
+                            <span class="font-semibold text-blue-600">12 sitios</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">💾 Bases de Datos</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Disponibilidad</span>
+                            <span class="font-semibold text-green-600">99.8%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Optimización</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">En Proceso</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Backups</span>
+                            <span class="font-semibold text-green-600">Diarios</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🔧 Mantenimiento</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">UPS</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Al día</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Aires Acondicionados</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Revisado</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Próximo Mantenimiento</span>
+                            <span class="font-semibold">15 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desarrollo Section -->
+        <section id="desarrollo" class="section-content hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">💻 Desarrollo de Software</h2>
+                <p class="text-gray-600">Estado de proyectos, integraciones y documentación</p>
+            </div>
+
+            <!-- KPIs Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Proyectos Finalizados</p>
+                            <p class="text-3xl font-bold text-green-600">78%</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-600 h-2 rounded-full progress-bar" style="width: 78%"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Documentación</p>
+                            <p class="text-3xl font-bold text-blue-600">82%</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 001 1h6a1 1 0 001-1V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 82%"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Integraciones Activas</p>
+                            <p class="text-3xl font-bold text-purple-600">15</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Sistemas conectados</p>
+                </div>
+            </div>
+
+            <!-- Development Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🔗 Estado de Integraciones</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Sistemas Internos</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">8 Activas</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">APIs Externas</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">7 Activas</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">En Desarrollo</span>
+                            <span class="font-semibold text-orange-600">3 proyectos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">📋 Proyectos Actuales</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Portal de Empleados</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">90%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">API de Inventarios</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm">65%</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Sistema de Reportes</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm">45%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover lg:col-span-2">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">📚 Estado de Documentación</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-green-50 rounded-lg">
+                            <div class="text-2xl font-bold text-green-600">12</div>
+                            <div class="text-sm text-gray-600">Documentos Actualizados</div>
+                        </div>
+                        <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                            <div class="text-2xl font-bold text-yellow-600">5</div>
+                            <div class="text-sm text-gray-600">Pendientes de Revisión</div>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-2xl font-bold text-blue-600">3</div>
+                            <div class="text-sm text-gray-600">En Desarrollo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamics AX Section -->
+        <section id="dynamics" class="section-content hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">🔧 Microsoft Dynamics AX</h2>
+                <p class="text-gray-600">Soporte, desarrollos e integraciones del sistema ERP</p>
+            </div>
+
+            <!-- KPIs Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Tickets Cerrados</p>
+                            <p class="text-3xl font-bold text-green-600">47</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Este mes</p>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Cumplimiento Entregas</p>
+                            <p class="text-3xl font-bold text-blue-600">94%</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 94%"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Tiempo Resolución</p>
+                            <p class="text-3xl font-bold text-purple-600">2.3</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Días promedio</p>
+                </div>
+            </div>
+
+            <!-- Dynamics Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🎫 Soporte Realizado</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Tickets Abiertos</span>
+                            <span class="font-semibold text-orange-600">12</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">En Proceso</span>
+                            <span class="font-semibold text-blue-600">8</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Cerrados</span>
+                            <span class="font-semibold text-green-600">47</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Críticos Resueltos</span>
+                            <span class="font-semibold text-red-600">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">⚙️ Desarrollos Implementados</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Módulo de Compras</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Completado</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Reportes Financieros</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Completado</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Workflow Aprobaciones</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm">En Pruebas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🔗 Integraciones en Curso</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Sistema de Nómina</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Activa</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Portal Web</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">En Desarrollo</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Sistema CRM</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Planificado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">📦 Control de Versiones</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Versión Actual</span>
+                            <span class="font-semibold text-blue-600">AX 2012 R3</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Desarrollos en Repo</span>
+                            <span class="font-semibold">156</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Último Deploy</span>
+                            <span class="font-semibold text-green-600">Hace 3 días</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Power BI Section -->
+        <section id="powerbi" class="section-content hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">📊 Power BI</h2>
+                <p class="text-gray-600">Tableros informativos y análisis de datos</p>
+            </div>
+
+            <!-- KPIs Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Tableros Completados</p>
+                            <p class="text-3xl font-bold text-green-600">73%</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-600 h-2 rounded-full progress-bar" style="width: 73%"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Áreas Cubiertas</p>
+                            <p class="text-3xl font-bold text-blue-600">85%</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Usuarios Activos</p>
+                            <p class="text-3xl font-bold text-purple-600">142</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Último mes</p>
+                </div>
+            </div>
+
+            <!-- Power BI Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">📈 Tableros Implementados</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Dashboard Financiero</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Activo</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Ventas y Marketing</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Activo</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Recursos Humanos</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Activo</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Operaciones</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm">En Desarrollo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">⚡ Impacto Medible</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Reducción Tiempo Reportes</span>
+                            <span class="font-semibold text-green-600">-65%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Decisiones Agilizadas</span>
+                            <span class="font-semibold text-blue-600">+40%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Usuarios Capacitados</span>
+                            <span class="font-semibold">89</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Satisfacción Usuario</span>
+                            <span class="font-semibold text-green-600">4.2/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover lg:col-span-2">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🚧 Tableros en Desarrollo</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 border border-gray-200 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-medium text-gray-800">Dashboard IT</h4>
+                                <span class="text-sm text-blue-600">60%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-2">Métricas de infraestructura y soporte</p>
+                        </div>
+                        <div class="p-4 border border-gray-200 rounded-lg">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-medium text-gray-800">Calidad y Procesos</h4>
+                                <span class="text-sm text-orange-600">35%</span>
+                            </div>
+                            <div class="bg-gray-200 rounded-full h-2">
+                                <div class="bg-orange-600 h-2 rounded-full" style="width: 35%"></div>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-2">KPIs de calidad y mejora continua</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seguridad Section -->
+        <section id="seguridad" class="section-content hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">🔒 Ciberseguridad y Seguridad</h2>
+                <p class="text-gray-600">Protección de activos y gestión de riesgos</p>
+            </div>
+
+            <!-- KPIs Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Vulnerabilidades Mitigadas</p>
+                            <p class="text-3xl font-bold text-green-600">91%</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-green-600 h-2 rounded-full progress-bar" style="width: 91%"></div>
+                    </div>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Campañas Ejecutadas</p>
+                            <p class="text-3xl font-bold text-blue-600">8</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Este trimestre</p>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Personal Capacitado</p>
+                            <p class="text-3xl font-bold text-purple-600">76%</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-200 rounded-full h-2">
+                        <div class="bg-purple-600 h-2 rounded-full progress-bar" style="width: 76%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🗺️ Mapas de Red y Riesgos</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Activos Críticos Mapeados</span>
+                            <span class="font-semibold text-green-600">156</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Riesgos Identificados</span>
+                            <span class="font-semibold text-orange-600">23</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Riesgos Mitigados</span>
+                            <span class="font-semibold text-green-600">21</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Nivel de Riesgo</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Medio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🛡️ Políticas de Seguridad</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Política de Contraseñas</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Aplicada</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Control de Accesos</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Aplicada</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Backup y Recuperación</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm">Aplicada</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="text-gray-700">Uso de Dispositivos</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded text-sm">En Revisión</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🔥 Ajustes en Firewall</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Reglas Activas</span>
+                            <span class="font-semibold">247</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bloqueos Este Mes</span>
+                            <span class="font-semibold text-red-600">1,234</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Última Actualización</span>
+                            <span class="font-semibold text-green-600">Hace 2 días</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Estado</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Óptimo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🎓 Campañas de Ciberseguridad</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Videos Educativos</span>
+                            <span class="font-semibold text-blue-600">12</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Capacitaciones</span>
+                            <span class="font-semibold text-green-600">6</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Material Distribuido</span>
+                            <span class="font-semibold">89 empleados</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Próxima Campaña</span>
+                            <span class="font-semibold text-orange-600">En 2 semanas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Help Desk Section -->
+        <section id="helpdesk" class="section-content hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">🎧 Help Desk / Soporte</h2>
+                <p class="text-gray-600">Atención a usuarios y gestión de equipos</p>
+            </div>
+
+            <!-- KPIs Row -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Tickets Resueltos</p>
+                            <p class="text-3xl font-bold text-green-600">127</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Este mes</p>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Tiempo Promedio</p>
+                            <p class="text-3xl font-bold text-blue-600">1.8h</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">De atención</p>
+                </div>
+
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Satisfacción</p>
+                            <p class="text-3xl font-bold text-purple-600">4.6</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">De 5 estrellas</p>
+                </div>
+            </div>
+
+            <!-- Help Desk Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🔄 Cambio de Equipos</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Equipos Reemplazados</span>
+                            <span class="font-semibold text-green-600">18</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Pantallas Cambiadas</span>
+                            <span class="font-semibold text-blue-600">12</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Equipos Nuevos Entregados</span>
+                            <span class="font-semibold text-purple-600">8</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Pendientes</span>
+                            <span class="font-semibold text-orange-600">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">👥 Soporte a Usuarios</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Tickets Abiertos</span>
+                            <span class="font-semibold text-orange-600">23</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">En Proceso</span>
+                            <span class="font-semibold text-blue-600">15</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Cerrados Hoy</span>
+                            <span class="font-semibold text-green-600">8</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Prioridad Alta</span>
+                            <span class="font-semibold text-red-600">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">📦 Gestión de Inventario</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Equipos en Stock</span>
+                            <span class="font-semibold">45</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Equipos Asignados</span>
+                            <span class="font-semibold text-blue-600">234</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">En Reparación</span>
+                            <span class="font-semibold text-orange-600">7</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Próxima Compra</span>
+                            <span class="font-semibold text-green-600">20 equipos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">📊 Estadísticas del Mes</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-3 bg-green-50 rounded-lg">
+                            <div class="text-xl font-bold text-green-600">127</div>
+                            <div class="text-sm text-gray-600">Tickets Cerrados</div>
+                        </div>
+                        <div class="text-center p-3 bg-blue-50 rounded-lg">
+                            <div class="text-xl font-bold text-blue-600">98%</div>
+                            <div class="text-sm text-gray-600">SLA Cumplido</div>
+                        </div>
+                        <div class="text-center p-3 bg-purple-50 rounded-lg">
+                            <div class="text-xl font-bold text-purple-600">1.8h</div>
+                            <div class="text-sm text-gray-600">Tiempo Promedio</div>
+                        </div>
+                        <div class="text-center p-3 bg-orange-50 rounded-lg">
+                            <div class="text-xl font-bold text-orange-600">23</div>
+                            <div class="text-sm text-gray-600">Tickets Activos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusiones Section -->
+        <section id="conclusiones" class="section-content hidden">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">📈 Conclusiones y Avances Globales</h2>
+                <p class="text-gray-600">Resumen ejecutivo del desempeño del departamento IT</p>
+            </div>
+
+            <!-- Global KPIs -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-green-600 mb-2">87%</div>
+                        <div class="text-sm font-medium text-gray-600">Cumplimiento Global</div>
+                        <div class="mt-3 bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-600 h-2 rounded-full progress-bar" style="width: 87%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-blue-600 mb-2">92%</div>
+                        <div class="text-sm font-medium text-gray-600">Disponibilidad Sistemas</div>
+                        <div class="mt-3 bg-gray-200 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 92%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-purple-600 mb-2">4.3</div>
+                        <div class="text-sm font-medium text-gray-600">Satisfacción Usuario</div>
+                        <div class="text-xs text-gray-500 mt-1">De 5 estrellas</div>
+                    </div>
+                </div>
+                <div class="kpi-card rounded-xl p-6 card-hover">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-600 mb-2">18</div>
+                        <div class="text-sm font-medium text-gray-600">Proyectos Activos</div>
+                        <div class="text-xs text-gray-500 mt-1">En desarrollo</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Area Performance Chart -->
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-8 card-hover">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">📊 Cumplimiento por Área</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700 font-medium w-32">Infraestructura</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-3">
+                            <div class="bg-green-500 h-3 rounded-full progress-bar" style="width: 91%"></div>
+                        </div>
+                        <span class="text-green-600 font-semibold w-12">91%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700 font-medium w-32">Desarrollo</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-3">
+                            <div class="bg-blue-500 h-3 rounded-full progress-bar" style="width: 78%"></div>
+                        </div>
+                        <span class="text-blue-600 font-semibold w-12">78%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700 font-medium w-32">Dynamics AX</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-3">
+                            <div class="bg-purple-500 h-3 rounded-full progress-bar" style="width: 94%"></div>
+                        </div>
+                        <span class="text-purple-600 font-semibold w-12">94%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700 font-medium w-32">Power BI</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-3">
+                            <div class="bg-indigo-500 h-3 rounded-full progress-bar" style="width: 73%"></div>
+                        </div>
+                        <span class="text-indigo-600 font-semibold w-12">73%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700 font-medium w-32">Ciberseguridad</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-3">
+                            <div class="bg-red-500 h-3 rounded-full progress-bar" style="width: 91%"></div>
+                        </div>
+                        <span class="text-red-600 font-semibold w-12">91%</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-700 font-medium w-32">Help Desk</span>
+                        <div class="flex-1 mx-4 bg-gray-200 rounded-full h-3">
+                            <div class="bg-yellow-500 h-3 rounded-full progress-bar" style="width: 88%"></div>
+                        </div>
+                        <span class="text-yellow-600 font-semibold w-12">88%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenges and Next Steps -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">⚠️ Retos Pendientes</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3 p-3 bg-orange-50 rounded-lg">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                            <div>
+                                <div class="font-medium text-gray-800">Servidores Virtuales Pendientes</div>
+                                <div class="text-sm text-gray-600">5 servidores virtuales requieren actualización</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-orange-50 rounded-lg">
+                            <div class="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
+                            <div>
+                                <div class="font-medium text-gray-800">Capacidad de Almacenamiento</div>
+                                <div class="text-sm text-gray-600">Planificar expansión para Q2 2024</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-yellow-50 rounded-lg">
+                            <div class="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+                            <div>
+                                <div class="font-medium text-gray-800">Documentación de Procesos</div>
+                                <div class="text-sm text-gray-600">Completar documentación de 5 procesos críticos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🎯 Próximos Pasos</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            <div>
+                                <div class="font-medium text-gray-800">Actualización Servidores Virtuales</div>
+                                <div class="text-sm text-gray-600">Completar actualización de los 5 servidores restantes</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-green-50 rounded-lg">
+                            <div class="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                            <div>
+                                <div class="font-medium text-gray-800">Automatización de Procesos</div>
+                                <div class="text-sm text-gray-600">Implementar RPA en 3 procesos clave</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3 p-3 bg-purple-50 rounded-lg">
+                            <div class="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+                            <div>
+                                <div class="font-medium text-gray-800">Capacitación Avanzada</div>
+                                <div class="text-sm text-gray-600">Programa de certificaciones para el equipo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Stats -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl shadow-lg p-8 mt-8 text-white">
+                <h3 class="text-xl font-bold mb-6 text-center">🏆 Logros Destacados del Mes</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">100%</div>
+                        <div class="text-blue-100">Servidores Físicos Actualizados</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">91%</div>
+                        <div class="text-blue-100">Cumplimiento Global de Servidores</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">55</div>
+                        <div class="text-blue-100">Total de Servidores Gestionados</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-300">Dashboard IT - Departamento de Tecnología</p>
+            <p class="text-gray-400 text-sm mt-2">Actualizado automáticamente • Datos en tiempo real</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white');
+                btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+            });
+            
+            // Highlight active button
+            event.target.classList.remove('text-gray-600', 'hover:bg-gray-100');
+            event.target.classList.add('bg-blue-600', 'text-white');
+        }
+
+        // Animate progress bars on load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelectorAll('.progress-bar').forEach(bar => {
+                    bar.style.width = bar.style.width;
+                });
+            }, 500);
+        });
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Auto-refresh data simulation (optional)
+        setInterval(() => {
+            // Simulate real-time updates
+            const timestamp = new Date().toLocaleTimeString('es-ES');
+            console.log(`Dashboard actualizado: ${timestamp}`);
+        }, 30000); // Update every 30 seconds
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97a7aa04759d4089',t:'MTc1NzA5NTYyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
